@@ -1,0 +1,1713 @@
+/* General Body Styles */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: #333;
+  top: 0 !important;
+  font-size: 16px; /* Increased base font size */
+  size-adjust: auto;
+}
+
+/* Header Styles */
+header {
+  background-color: #fff;
+  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+.logo img {
+  height: 40px;
+  vertical-align: middle;
+}
+
+.mobile-menu-toggle {
+  display: none;
+}
+/* Navigation Menu */
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 30px;
+}
+
+.main-nav li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #555;
+  font-size: 16px; /* Increased from 14px */
+  font-weight: 500;
+  transition: color 0.3s;
+  white-space: nowrap;
+}
+
+.main-nav .subtext {
+  font-size: 12px; /* Increased from 10px */
+  color: #777;
+  margin-top: -5px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 2%;  
+  justify-items: left;
+  padding-left: 20px;
+  background-color: #f1f1f1;
+  min-width: 175px;
+  width: fit-content;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 9999;
+}
+
+/* Links inside the dropdown */
+.dropdown-menu a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 15px; /* Increased from default */
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-menu a:hover {
+  border-bottom: 2px solid black;  
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Mobile menu toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  background-color: #ffffff;
+  outline: none; /* Remove focus outline */
+  box-shadow: none;
+}
+
+.mobile-menu-toggle:focus,
+.mobile-menu-toggle:active {
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.mobile-menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Language Selector */
+#google_translate_element {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  display: none !important;
+}
+
+.goog-te-combo {
+  display: none !important;
+}
+
+.language-selector {
+  display: flex;
+  border: 1px solid #ccc;
+  gap: 10px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px; /* Increased from 12px */
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.lang-btn.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.lang-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.lang-btn:not(.active) {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Main Video Section */
+.video-section {
+  background-color: #d9d9d9;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.video-placeholder {
+  color: #a0a0a0;
+  font-weight: 300;
+}
+
+.video-title {
+  font-size: 2rem; /* Increased from 1.5rem */
+  margin: 0 0 10px 0;
+  font-weight: 300;
+  color: #000;
+  padding-bottom: 30px;
+}
+
+.video-subtitle {
+  font-size: 2.5rem; /* Increased from 2rem */
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: white;
+  font-weight: bold;
+}
+
+/* About Section */
+.about-section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.about-section h2 {
+  font-size: 3rem; /* Increased from 2.5rem */
+  font-weight: 500;
+  color: #333;
+}
+
+/* Container for the entire section */
+.about-section {
+  padding: 80px 20px;
+  background-color: #f8f8f8;
+}
+
+/* Header for the section */
+.about-section-intro {
+  padding: 20px;
+  width: auto;
+}
+
+
+
+/* New wrapper for the entire "About" section to handle the two-column layout */
+.about-page-layout {
+  display: flex;
+  width: 100%;
+  min-height: 500px;
+}
+
+/* Gray background header section */
+.about-section-header-only {
+  background-color: #f8f8f8;
+  padding-left: 20px;
+  width: 50%;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Inner container for the header text */
+.about-header-container {
+  padding-right: 20px; 
+  max-width: 600px;
+  text-align: left;
+}
+
+.about-header-container h2 {
+  font-size: 3rem; /* Increased from 2.5rem */
+  font-weight: 700;
+  margin: 0;
+  color: #000;
+}
+
+.about-header-container .subtitle {
+  font-size: 1.1rem; /* Increased from 0.9rem */
+  color: #555;
+  margin-top: 5px;
+}
+
+/* White background content section */
+.about-section-content {
+  background-color: #fff;
+  width: 80%;
+  padding: 50px 20px;
+}
+
+.info-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 100px 1fr; /* 100px for the label, 1fr for the content */
+  gap: 10px; /* Space between the label and content */
+}
+
+/* 1. Style for individual items (Company Name, Business Description) */
+.info-item {
+  /* Use display: contents to allow the children (.label and .content) 
+     to be placed directly into the .info-grid columns. */
+  display: contents; 
+}
+
+/* 2. Style for the left-side labels (会社名, 事業内容, 事業の特徴) */
+.info-item .label {
+  grid-column: 1; /* Always in the first column */
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+  padding: 12px 0;
+  border-top: 1px solid #eee; /* Apply top border here for consistency */
+  white-space: nowrap;
+}
+
+/* 3. Style for the content (BITEX HOLDINGS LLC, business list) */
+.info-item .content {
+  grid-column: 2; /* Always in the second column */
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  padding: 12px 0;
+  border-top: 1px solid #eee; /* Apply top border here for consistency */
+}
+
+/* Remove the top border from the very first item (会社名) */
+.info-item:first-child .label,
+.info-item:first-child .content {
+  border-top: none;
+}
+
+/* --- Specific styling for "事業の特徴" and its rows --- */
+
+/* The label for "事業の特徴" */
+.info-item:nth-child(3) .label {
+    border-bottom: 1px solid #eee; /* Add bottom border to the label */
+}
+
+.label, .feature-label {
+  flex-shrink: 0;
+  font-weight: bold;
+  font-size: 1.1rem; /* Increased from 1rem */
+  width: 150px;
+  color: #333;
+}
+
+.content, .feature-content {
+  flex-grow: 1;
+  font-size: 1.1rem; /* Increased from 1rem */
+  color: #555;
+  line-height: 1.6;
+}
+
+.feature-items {
+    display: contents;
+}
+
+.feature-row {
+  /* Nested grid for the feature label/description alignment */
+  display: grid;
+  grid-template-columns: 120px 1fr; /* Fixed width for the button, 1fr for the text */
+  gap: 20px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee; /* Separator line between feature rows */
+}
+
+.feature-label {
+  /* Style for the button-like box */
+  grid-column: 1;
+  font-weight: normal;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 0px;
+  background-color: #fff;
+  white-space: nowrap;
+}
+.feature-content {
+  grid-column: 2;
+  flex-grow: 1;
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.6;
+  padding-left: 47px;
+}
+.info-item:nth-child(3) .content {
+    /* No border-top here to avoid double-line with the feature label's top border */
+    border-top: none; 
+}
+.hero-banner {
+  position: relative;
+  height: 251px; 
+  background-image: url('img/Rectangle.png');  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h2 {
+  font-size: 3.5rem; /* Increased from 3rem */
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.hero-content .subtitle {
+  font-size: 1.2rem; /* Increased from 1rem */
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.hero-content .content {
+  font-size: 1.1rem; /* Increased from 1rem */
+  font-weight: 300;
+  margin-top: 50px;
+}
+
+.hero-content p {
+  color: #fff;
+}
+
+/*================================================================================*/
+.hero-content2 {
+  position: relative;
+  z-index: 2;
+  padding: 1%;
+}
+
+.hero-content2 h2 {
+  font-size: 3.5rem; /* Increased from 3rem */
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.hero-content2 .subtitle {
+  font-size: 1.2rem; /* Increased from 1rem */
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.network-header2 {
+  padding: 0 50px;
+  align-self: flex-start;
+  margin-bottom: 20px;
+}
+
+/* Grid Container */
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  margin-top: -60px;
+}
+
+/* Mobile Carousel for Global Network */
+.mobile-carousel {
+  display: none;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.carousel-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.carousel-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.carousel-btn:disabled {
+  background: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+}
+
+/* Card Styling */
+.card {
+  display: flex;
+  overflow: hidden;
+  width: 80%;
+  border-radius: 4px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: none;
+  min-height: 350px;
+}
+
+.card-content {
+  flex-basis: 40%;
+  padding: 2.5rem;
+}
+
+.card-image {
+  flex-basis: 60%;
+  background-size: cover;
+  background-position: center;
+}
+
+.card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  cursor: pointer;
+}
+
+/* Content Typography */
+.card-content .tag {
+  font-size: 0.9rem; /* Increased from 0.8rem */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.card-content h2 {
+  font-size: 1.8rem; /* Increased from 1.6rem */
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+}
+
+.card-content p {
+  font-size: 1rem; /* Increased from 0.9rem */
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
+
+.card-content .read-more {
+  display: inline-block;
+  margin-top: 1.5rem;
+  font-size: 1rem; /* Increased from 0.9rem */
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.card-content .read-more:hover {
+  transform: translateX(4px);
+}
+
+/* Color Variations */
+.card-content.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+.light .tag { color: #888; }
+.light p { color: #666; }
+.light .read-more { color: #888; }
+
+.card-content.dark {
+  background-color: #4a4a4a;
+  color: #f0f0f0;
+}
+.dark .tag { color: #ccc; }
+.dark p { color: #ddd; }
+.dark .read-more { color: #ccc; }
+
+.news-section {
+  background-color: white;
+  padding: 30px 50px;
+}
+
+.news-container {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 100px;
+  align-items: flex-start;
+}
+
+.news-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.news-left h2 {
+  font-size: 3rem; /* Increased from 2.5rem */
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.news-left p {
+  font-size: 1rem; /* Increased from 0.9rem */
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.read-more-button {
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem; /* Increased from 0.9rem */
+}
+
+.news-right {
+  flex: 2;
+  padding-top: 50px;
+}
+
+.news-item {
+  margin-bottom: 20px;
+}
+
+.date-content-wrapper {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 5px;
+}
+
+.news-date {
+  flex-shrink: 0;
+  width: 100px;
+  font-size: 1rem; /* Increased from 0.9rem */
+}
+
+.news-content {
+  font-size: 1rem; /* Increased from 0.9rem */
+  color: #333;
+}
+
+.news-item hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin-top: 15px;
+}
+
+/* recruit section */
+.recruit-section {
+  background-color: black;
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.recruit-header h1 {
+  font-size: 3rem; /* Increased from 2.5rem */
+  margin: 0;
+}
+
+.recruit-header p {
+  font-size: 1rem; /* Increased from 0.9rem */
+  font-weight: 300;
+  color: #ccc;
+  margin-top: 5px;
+  margin-bottom: 50px;
+}
+
+.image-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Mobile Recruit Carousel */
+.recruit-carousel {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.recruit-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+
+.image-card {
+  position: relative;
+  overflow: hidden;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+ 
+}
+
+.image-card img {
+  width: 100%;
+  height: 300px; 
+  object-fit: cover; 
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover img {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px 15px;
+  text-align: left;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.image-card:hover .image-overlay {
+  transform: translateY(0);
+}
+
+.image-overlay p {
+  margin: 0;
+  font-size: 1.2rem; /* Increased from 1rem */
+  font-weight: bold;
+}
+
+.image-overlay .read-more {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 1rem; /* Increased from 0.8rem */
+  margin-top: 5px;
+}
+
+.philosophy-section {
+  background-color: white;
+  padding: 40px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.philosophy-container {
+  max-width: 78%;
+  width: 100%;
+  text-align: center;
+}
+
+.philosophy-container h1 {
+  font-size: 3rem; /* Increased from 2.5rem */
+  margin-bottom: 20px;
+}
+
+.philosophy-container p {
+  font-size: 1.1rem; /* Increased from 0.9rem */
+  line-height: 1.6;
+  color: #4a4a4a;
+  text-align: left;
+}
+
+/* Footer Styles */
+.site-footer {
+  background-color: black;
+  color: white;
+  padding: 50px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  padding: 0 20px;
+  flex-basis: 30%;
+}
+
+.footer-column h3 {
+  font-size: 1.4rem; /* Increased from 1.2rem */
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem; /* Increased from 0.9rem */
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: white;
+}
+
+.footer-divider {
+  border: 0;
+  border-top: 1px solid #444;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.social-icons,
+.logo-and-copyright,
+.spacer {
+  flex-basis: 33.33%;
+  display: flex;
+  align-items: center;
+}
+
+.social-icons {
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.logo-and-copyright {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icons a:hover {
+  color: #00bcd4;
+}
+
+.footer-logo img {
+  width: 150px;
+  height: auto;
+}
+
+.copyright {
+  font-size: 0.9rem; /* Increased from 0.8rem */
+  color: #888;
+  margin-top: 15px;
+}
+
+.spacer {
+  justify-content: flex-end;
+}
+
+/* =======================
+   RESPONSIVE BREAKPOINTS
+   ======================= */
+
+/* Tablet Styles (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .header-container {
+    padding: 0 15px;
+  }
+  
+  .main-nav ul {
+    gap: 20px;
+  }
+  
+  .main-nav a {
+    font-size: 14px; /* Slightly reduced for tablet */
+  }
+  
+  .main-nav .subtext {
+    font-size: 11px; /* Slightly reduced for tablet */
+  }
+  
+  .hero-content h2 {
+    font-size: 3rem; /* Adjusted for tablet */
+  }
+  
+  .about-header-container h2 {
+    font-size: 2.5rem; /* Adjusted for tablet */
+  }
+  
+  .locations-grid {
+    gap: 1.5rem;
+  }
+  
+  .card-content {
+    padding: 2rem;
+  }
+  
+  .news-container {
+    gap: 50px;
+  }
+  
+  .image-gallery {
+    gap: 10px;
+  }
+}
+
+/* Mobile Styles (768px and below) */
+@media (max-width: 768px) {
+  /* Mobile Navigation */
+  /* Bootstrap carousel overrides for mobile */
+  .mobile-carousel .carousel {
+    margin-bottom: 20px;
+  }
+  
+  .mobile-carousel .carousel-inner {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .mobile-carousel .carousel-indicators {
+    bottom: -40px;
+  }
+  
+  .mobile-carousel .carousel-indicators li {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid #fff;
+  }
+  
+  .mobile-carousel .carousel-indicators .active {
+    background-color: #fff;
+  }
+  
+  /* Network carousel cards in mobile */
+  .mobile-carousel .card {
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 400px;
+  }
+  
+  .mobile-carousel .card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-basis: 200px;
+    flex-shrink: 0;
+  }
+  
+  .mobile-carousel .card-content {
+    flex-basis: auto;
+    padding: 1.5rem;
+    flex-grow: 1;
+  }
+  
+  .mobile-carousel .card-content.light {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .mobile-carousel .card-content.dark {
+    background-color: #4a4a4a;
+    color: #f0f0f0;
+  }
+  
+  /* Recruit carousel in mobile */
+  /* Make recruit image overlays always visible in mobile */
+  .recruit-carousel .image-overlay {
+    transform: translateY(0) !important; /* Always visible */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: white;
+    padding: 15px 20px !important;
+    text-align: left;
+    transition: background-color 0.3s ease;
+  }
+  
+  .recruit-carousel .image-overlay:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .recruit-carousel .image-overlay p {
+    margin: 0 0 8px 0 !important;
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    color: white !important;
+  }
+  
+  .recruit-carousel .image-overlay .read-more {
+    display: inline-block !important;
+    color: #00bcd4 !important;
+    text-decoration: none;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .recruit-carousel .image-overlay .read-more:hover {
+    color: #ffffff !important;
+  }
+  
+  /* Also fix desktop recruit overlays for consistency */
+  .image-gallery .image-overlay {
+    transform: translateY(0) !important; /* Always visible */
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+  
+  .image-gallery .image-overlay p {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+  }
+  
+  .image-gallery .image-overlay .read-more {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: #00bcd4 !important;
+  }
+
+  .recruit-carousel .carousel {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .recruit-carousel .image-card {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .recruit-carousel .image-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  /* Carousel controls styling */
+  .mobile-carousel .card {
+    min-height: 450px !important; /* Increased from 400px */
+    margin-bottom: -50px !important; /* Negative margin to overlap background */
+    position: relative;
+    z-index: 10;
+  }
+  
+  .mobile-carousel .card-image {
+    height: 250px !important; /* Increased from 200px */
+    flex-basis: 250px !important;
+  }
+  
+  .mobile-carousel .card-content {
+    padding: 2rem !important; /* More padding */
+    flex-grow: 1;
+  }
+  
+  /* Add some spacing to the carousel container */
+  .mobile-carousel {
+    margin-bottom: 60px !important;
+    padding-bottom: 20px;
+  }
+
+  .mobile-carousel .carousel-control,
+  .recruit-carousel .carousel-control {
+    background: none;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .mobile-carousel .carousel-control.left,
+  .recruit-carousel .carousel-control.left {
+    left: 10px;
+  }
+  
+  .mobile-carousel .carousel-control.right,
+  .recruit-carousel .carousel-control.right {
+    right: 10px;
+  }
+  
+  .mobile-carousel .carousel-control .glyphicon,
+  .recruit-carousel .carousel-control .glyphicon {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .mobile-carousel .carousel-control:hover .glyphicon,
+  .recruit-carousel .carousel-control:hover .glyphicon {
+    color: white;
+  }
+  
+  /* Fix for card image backgrounds not showing */
+  .mobile-carousel .card-image[style*="background-image"] {
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    min-height: 200px;
+  }
+  
+  /* Fallback images if background images don't load */
+  .mobile-carousel .card:nth-child(1) .card-image {
+    background-image: url('img/japan.png');
+  }
+  
+  .mobile-carousel .card:nth-child(2) .card-image {
+    background-image: url('img/england.png');
+  }
+  
+  .mobile-carousel .card:nth-child(3) .card-image {
+    background-image: url('img/singapore.png');
+  }
+  
+  .mobile-carousel .card:nth-child(4) .card-image {
+    background-image: url('img/uae.png');
+  }
+
+  /* Header container layout for mobile */
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  
+  .logo {
+    order: 1;
+    flex-shrink: 0;
+  }
+
+   /* Language selector and menu toggle container */
+  .header-right {
+    order: 2;
+    display: flex;
+    align-items: center;
+    /* gap: 2px; */
+    
+  }  
+   
+
+  .mobile-menu-toggle {
+    order: 2;
+    display: flex;
+  }
+  
+  .main-nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+    order: 3;
+  }
+  
+  .main-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .main-nav ul {
+    flex-direction: column;
+    padding: 20px;
+    gap: 0;
+  }
+  
+  .main-nav li {
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+    align-items: flex-start;
+  }
+  
+  .main-nav li:last-child {
+    border-bottom: none;
+  }
+  
+  .main-nav a {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    display: none;
+    background-color: #f8f8f8;
+    box-shadow: none;
+    padding: 10px 0;
+    margin-top: 10px;
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .dropdown-menu a {
+    padding: 8px 20px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .dropdown.active .dropdown-menu {
+    display: block;
+  }
+  
+  /* Compressed Language Selector */
+  .language-selector {
+    order: 1;
+    border: 1px solid #ccc;
+    border-right: none;
+    gap: 4;
+    margin-right: 4px;
+  }
+  
+  /* Compressed language selector for mobile - JP/EN */
+  .lang-btn {
+    padding: 6px 8px;
+    font-size: 10px;
+    min-width: 30px;
+    position: relative;
+    overflow: hidden;
+    text-indent: -9999px;
+  }
+  
+    .lang-btn::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-indent: 0;
+    font-size: 10px;
+    font-weight: 500;
+  }
+  
+  .lang-btn[data-lang="ja"]::after {
+    content: "JP";
+  }
+  
+  .lang-btn[data-lang="en"]::after {
+    content: "EN";
+  }
+  
+  .lang-btn.active::after {
+    color: #fff;
+  }
+
+  /* Video section */
+  .video-section {
+    height: 60vh;
+    margin-top: 70px;
+  }
+  
+  .video-title {
+    font-size: 1.4rem;
+    padding-bottom: 20px;
+  }
+  
+  .video-subtitle {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+  
+  /* About section - Keep header on left */
+  .about-section-intro {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .about-section-header-only {
+    width: 80%;
+    height: auto;
+    padding: 30px 20px;
+    justify-content: flex-start;
+  }
+  
+  .about-header-container {
+    text-align: left;
+    padding-right: 0;
+  }
+  
+  .about-header-container h2 {
+    font-size: 2rem;
+  }
+  
+  .about-section-content {
+    width: 100%;
+  }
+  
+  .info-item, .feature-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .label, .feature-label {
+    width: 100%;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+  }
+  
+  /* Hero banner */
+  .hero-content h2 {
+    font-size: 2.2rem;
+  }
+  
+  .hero-content .content {
+    font-size: 0.9rem;
+    margin-top: 30px;
+  }
+  
+  /* Global Network - Bold header on left, carousel */
+  .hero-content2 h2 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .network-header2 {
+    padding: 0 20px;
+    text-align: left;
+    margin-bottom: 30px;
+    font-weight: bolder;
+    font-size: larger;
+  }
+  .network-header2 h2 {
+    padding: 0 20px;
+    text-align: left;
+    margin-bottom: 30px;
+    font-weight: bolder;
+    font-size: larger;
+  }
+  .network-header2 .subtitle {
+    padding: 0 20px;
+    text-align: left;
+    margin-bottom: 30px;
+    font-weight: bolder;
+    font-size: larger;
+  }
+  
+  .locations-grid {
+    display: none;
+  }
+  
+  .mobile-carousel {
+    display: block;
+  }
+  
+  .carousel-container {
+    padding: 0 20px;
+  }
+  
+  .carousel-track .card {
+    width: 100%;
+    flex-shrink: 0;
+    margin-right: 20px;
+    flex-direction: column;
+  }
+  
+  .card-content,
+  .card-image {
+    flex-basis: auto;
+  }
+  
+  .card-image {
+    height: 200px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200"><rect width="300" height="200" fill="%23666"/><text x="150" y="100" text-anchor="middle" dy=".3em" fill="white" font-family="Arial" font-size="16">Location Image</text></svg>');
+  }
+  
+  .card-content {
+    padding: 1.5rem;
+  }
+  
+  /* News section */
+  .news-section {
+    padding: 30px 20px;
+  }
+  
+  .news-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .news-left h2 {
+    font-size: 2rem;
+  }
+  
+  .news-right {
+    padding-top: 0;
+  }
+  
+  .date-content-wrapper {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .news-date {
+    width: auto;
+    font-weight: bold;
+  }
+  
+  /* Recruit section - Carousel */
+  .recruit-header h1 {
+    font-size: 2rem;
+  }
+  
+  .image-gallery {
+    display: none;
+  }
+  
+  .recruit-carousel {
+    display: block;
+  }
+  
+  .recruit-track .image-card {
+    width: 100%;
+    flex-shrink: 0;
+    margin-right: 20px;
+  }
+  
+  .image-card img {
+    height: 250px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250"><rect width="400" height="250" fill="%23333"/><text x="200" y="125" text-anchor="middle" dy=".3em" fill="white" font-family="Arial" font-size="18">Recruit Image</text></svg>');
+    background-size: cover;
+  }
+  
+  /* Philosophy section */
+  .philosophy-section {
+    padding: 40px 20px;
+  }
+  
+  .philosophy-container {
+    max-width: 100%;
+  }
+  
+  .philosophy-container h1 {
+    font-size: 2rem;
+  }
+  
+  /* Footer - Align left */
+  .footer-top {
+    align-items: flex-start;
+    text-align: left;
+  }
+  
+  .footer-column {
+    flex-basis: 100%;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+  }
+  
+  .footer-column h3 {
+    text-align: left;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .social-icons,
+  .logo-and-copyright,
+  .spacer {
+    flex-basis: auto;
+    justify-content: center;
+  }
+  
+  .spacer {
+    display: none;
+  }
+
+  /* Reset the main grid to a single column */
+  .info-grid {
+    display: block; /* Changes grid to a stacked block layout */
+  }
+
+  /* Make each info item a block for stacking */
+  .info-item {
+    display: block; 
+    margin-bottom: 20px; /* Adds space between each section */
+  }
+  
+  /* Style the main labels (会社名, 事業内容, etc.) */
+  .info-item .label {
+    grid-column: auto; /* Resets the grid-column property */
+    border-top: none; /* Removes the border from the previous layout */
+    margin-bottom: 5px; /* Adds space below the label */
+  }
+
+  /* Style the content sections */
+  .info-item .content {
+    grid-column: auto; /* Resets the grid-column property */
+    border-top: none; /* Removes the border from the previous layout */
+  }
+
+  /* Re-style the "事業内容" list to stack the items */
+  .business-segments-list {
+    display: block; /* Stacks the list of business segments */
+  }
+
+  .segment-item {
+    display: block; /* Ensures each segment is on its own line */
+    padding-bottom: 5px; /* Adds spacing between stacked items */
+  }
+
+  /* Re-style the "事業の特徴" section to stack the feature rows */
+  .feature-row {
+    display: block; /* Stacks the feature rows */
+    border-bottom: 1px solid #eee; /* Adds a separator line */
+    padding: 10px 0; /* Adjusts padding */
+  }
+  
+  .feature-row:first-child {
+      border-top: 1px solid #eee; /* Add a top border to the first row for consistency */
+  }
+
+  /* Style the button-like labels in the feature rows */
+  .feature-label {
+    width: 65%; /* Let the width be determined by content */
+    display: block; /* Stacks the label above the content */
+    text-align: center; /* Aligns the text to the left */
+    margin-bottom: 10px; /* Space between the button and text */
+    /* Add any other styling like padding or margins as needed */
+  }
+
+  .feature-content {
+    display: block; /* Stacks the content below the label */
+    /* text-align: left; */
+  }
+}
+
+/* Mobile Portrait (480px and below) */
+@media (max-width: 480px) {
+  .logo img {
+    height: 35px;
+  }
+  
+  .lang-btn {
+    padding: 4px 6px;
+    font-size: 9px;
+  }
+  
+  .video-section {
+    height: 50vh;
+  }
+  
+  .video-title {
+    font-size: 2rem;
+  }
+  
+  .video-subtitle {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+  }
+  
+  .about-header-container h2 {
+    font-size: 1.9rem;
+  }
+  
+  .hero-content h2 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .hero-content2 h2 {
+    font-size: 2.5rem;
+  }
+  
+  .news-left h2 {
+    font-size: 2.4rem;
+  }
+  .news-left p {
+    font-size: 2.4rem;
+  }
+  .news-content{
+    font-size: 1.5rem;
+  }
+
+  .news-date{
+    font-size: 1.5rem;
+  }
+  
+  .recruit-header h1 {
+    font-size: 3.5rem;
+  }
+  .recruit-header p {
+    font-size: 1.5rem;
+  }
+  
+  .philosophy-container h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  
+  .card-content h2 {
+    font-size: 1.2rem;
+  }
+  
+  .image-card img {
+    height: 200px;
+  }
+  
+  .philosophy-section {
+    padding: 30px 15px;
+  }
+  
+  .news-section {
+    padding: 30px 15px;
+  }
+
+  .site-footer{
+    font-size: 2.5rcap;
+  }
+}
+
+/* Styles for Desktop/Large Screens (Default) */
+.business-segments-list {
+  display: flex; /* Arranges items in a row */
+  flex-wrap: nowrap; /* Keeps items on one line */
+  gap: 5px; /* Adds space between items */
+  line-height: 1.5;
+}
+
+.segment-item {
+  /* Remove any default block margin/padding */
+  margin: 0;
+  padding: 0;
+  /* Allows segments to sit inline with each other */
+  display: inline;
+}
+
+/* Media Query for Mobile Devices (Stacking the items) */
+@media (max-width: 600px) {
+  .business-segments-list {
+    /* Reset flex properties for stacking */
+    display: block;
+  }
+
+  .segment-item {
+    /* Make each item take up its own line */
+    display: block;
+    margin-bottom: 5px; /* Add some space between the stacked lines */
+  }
+}

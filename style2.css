@@ -1,0 +1,596 @@
+/* style2.css */
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  padding-top: 30px;
+  height: 240px;
+  width: 100%;
+}
+
+.hero-image {
+  background-image: url('/img/hero.png'); /* Replace with actual path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); /* Overlay */
+  z-index: 1;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* Breadcrumb Section */
+.breadcrumb-section {
+  background-color: #ffffff;
+  padding: 12px 16px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.breadcrumb-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #555;
+}
+
+.breadcrumb-container a {
+  color: #111;
+  text-decoration: none;
+}
+
+.breadcrumb-container a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 24px;
+  }
+
+  .breadcrumb-section {
+    padding: 10px;
+  }
+}
+
+/* Main content container for centering and max-width */
+.container {
+    /* max-width: 800px; /* Adjust as needed for desired text column width *
+    margin: 0 auto;
+    padding: 0 20px; Padding for mobile view */
+    width: 70%;
+    max-width: 1000px; /* A fixed width to control the layout */
+    margin: 0 auto;
+    padding: 0px 0px 1px; 
+}
+
+
+/* Page Title Styling */
+.page-title {
+    text-align: center;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 50px;
+}
+
+.about-section2 {
+    border-bottom: 2px solid #111;
+    width: 70%;
+    max-width: 1000px; /* A fixed width to control the layout */
+    margin: 0 auto;
+    padding: 0px 0px 1px; /* Padding around the section */
+}
+/* About Section Text Styling */
+.about-section2 p {
+    font-size: 16px;
+    margin-bottom: 25px; /* Adds space between paragraphs */
+    text-align: left; /* Aligns text to the left */
+}
+
+/* Responsiveness - no major changes needed as the design is already responsive by nature */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 1.8em;
+    }
+}
+
+/* Container for the entire company overview section */
+.company-overview-container {
+    max-width: 900px; /* Adjust width as needed */
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    /*margin: 0 auto;  Keeps the main content section centered */
+    background-color: #fff; /* White background for the content block */
+    /* box-shadow: 0 0 10px rgba(0,0,0,0.05); Optional: subtle shadow */
+}
+
+/* Title Box Styling */
+.overview-title-box {
+    background-color: #f0f0f0; /* Lighter background for the title box */
+    padding: 10px 20px;
+    /* Removed text-align: center; */
+    /* Add a specific width to the title box to match the visual extent */
+    width: 350px; /* Approximate width based on the image */
+    margin-bottom: 30px; /* Space below the title box */
+    /* Aligning the box itself to the left within its parent.
+       This assumes the .company-overview-container has some padding or the table starts after it.
+       For the current structure, just removing text-align: center; from the title
+       and ensuring the title box itself doesn't stretch 100% width is key.
+       If we want the box to float left within the container, we need to adjust its display.
+    */
+    text-align: center; /* Keep the text inside the box left-aligned */
+}
+
+.overview-title {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 700;
+    color: #333;
+}
+
+/* Company Info Table Styling (using CSS Grid for structure) */
+.company-info-table {
+    position: center;
+    margin: 0 auto; /* Center the table */
+    padding: 0 40px 40px; /* Padding for the entire table content */
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 180px 1fr; /* Fixed width for 'item', fluid for 'content' */
+    border-bottom: 1px solid #eee; /* Horizontal separator */
+    padding: 15px 0;
+    align-items: baseline; /* Align content to the bottom of the cell */
+}
+
+.table-row:last-child {
+    border-bottom: none; /* No border for the last row */
+}
+
+.table-cell {
+    padding: 0 15px; /* Internal padding for cells */
+    font-size: 15px;
+    color: #555;
+}
+
+.item {
+    font-weight: 500;
+    color: #333;
+}
+
+/* Table Header Specific Styling */
+.table-header {
+    border-bottom: 1px solid #ccc; /* Thicker border for header */
+    margin-bottom: 10px; /* Space between header and first data row */
+    font-weight: 700;
+    color: #000;
+}
+
+.table-header .table-cell {
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .company-overview-container {
+        padding: 0;
+    }
+
+    .overview-title-box {
+        width: auto; /* Allow full width on small screens */
+        padding: 20px 15px;
+        margin-bottom: 20px;
+        text-align: center; /* Center the text inside the box for mobile */
+    }
+
+    .overview-title {
+        font-size: 1.6em;
+    }
+
+    .company-info-table {
+        padding: 0 20px 30px;
+    }
+
+    .table-row {
+        grid-template-columns: 1fr; /* Stack columns on small screens */
+        padding: 10px 0;
+    }
+
+    .table-cell {
+        padding: 5px 0;
+        font-size: 14px;
+    }
+
+    .table-header {
+        display: none; /* Hide table header on very small screens if desired, or adjust layout */
+    }
+}
+
+@media (max-width: 480px) {
+    .company-info-table {
+        padding: 0 15px 20px;
+    }
+}
+
+/* Core Values Section */
+.core-values-section {
+    max-width: 1000px; /* A fixed width to control the layout */
+    margin: 0 auto;
+    padding: 0px 0px 1px; /* Padding around the section */
+    border-bottom: 2px solid #111;
+    width: 70%;
+}
+
+/* Individual Block Styling (for each value) */
+.value-block {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Increased gap to match the design's spacing */
+    margin-bottom: 60px; /* More space between each section */
+}
+
+/* The circular icon container */
+.icon-container {
+    flex-shrink: 0; /* Prevents the container from shrinking */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 130px; /* Fixed size for the circular element */
+    height: 130px;
+    border: 1px solid #ddd;
+    border-radius: 50%; /* Makes it a perfect circle */
+    background-color: #fff;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Optional: subtle shadow */
+}
+
+.icon-container img {
+    width: 60px; /* Adjust icon size */
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.icon-container .icon-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Paragraph text styling */
+.text-content p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Styling for the last section with the grid */
+.values-grid-block {
+    align-items: flex-start; /* Align to the top, as the grid content is taller */
+}
+
+.values-grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%; /* Take up the full remaining width */
+}
+
+.grid-item {
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-left: 3px solid #333; /* Darker border for a clean look */
+    border-radius: 5px;
+}
+
+.grid-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.grid-item p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .value-block {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        text-align: center;
+        gap: 20px;
+    }
+
+    .icon-container {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .icon-container img {
+      width: 40px;
+    }
+
+    .values-grid-container {
+        grid-template-columns: 1fr; /* Make grid items stack on mobile */
+    }
+    
+    .text-content, .values-grid-container {
+        padding: 0 10px; /* Add some padding to prevent content from touching screen edges */
+    }
+    
+    .value-block .text-content {
+        margin-top: -15px; /* Adjust to reduce space after icon container on mobile */
+    }
+}
+
+.image img {
+  max-width: 200px; /* Adjust the size as needed */
+  height: auto;
+  border-radius: 8px; /* Optional: adds rounded corners to the image */
+}
+
+
+.timeline-section {
+    position: relative;
+    padding: 20px 0;
+}
+
+.timeline-line {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+.timeline-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* The vertical line */
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    background-color: #333;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1px;
+    z-index: 1;
+}
+
+/* Individual timeline events */
+.timeline-event {
+    position: relative;
+    width: 45%;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+/* The circular dot marker */
+.timeline-event::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.left-event {
+    left: 0;
+}
+
+.right-event {
+    left: 55%;
+}
+
+.left-event::after {
+    left: calc(100% + 14px); /* Position the dot after the content block */
+}
+
+.right-event::after {
+    left: -22px; /* Position the dot before the content block */
+}
+
+/* The content box */
+.timeline-content {
+    background-color: #222;
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.event-date {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0 0 5px;
+    color: #bbb;
+}
+
+.event-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.event-description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    color: #ddd;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .timeline-container::after {
+        left: 25px; /* Adjust the line position */
+    }
+
+    .timeline-event {
+        width: 100%;
+        left: 0;
+        padding-left: 60px; /* Space for the line and dot */
+        margin-bottom: 30px;
+    }
+
+    .right-event {
+        left: 0;
+    }
+
+    .left-event::after,
+    .right-event::after {
+        left: 18px; /* Position dots on the left side for all events */
+    }
+}
+
+ .member-introduction-section {
+        background-color: #1a1a1a;
+        padding: 40px 0;
+        color: #f8f9fa;
+      }
+
+      .section-header-wrapper {
+        background-color: #f8f9fa;
+        padding: 15px 30px; /* Adjusted padding for better fit */
+        position: relative;
+        left: 0;
+        z-index: 1;
+        border-bottom-right-radius: 5px;
+      }
+
+      .section-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+      }
+
+      /* Container for the carousel to handle spacing */
+      .carousel-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* Carousel item styling */
+      .member-card {
+        background-color: #ffffff;
+        color: #333;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        display: flex;
+        align-items: flex-start;
+      }
+
+      .member-card-img-placeholder {
+        width: 150px;
+        height: 150px;
+        background-color: #e0e0e0;
+        border-radius: 4px;
+        margin-right: 25px;
+        flex-shrink: 0;
+      }
+
+      .member-card-content h3 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333;
+      }
+
+      .member-card-content h4 {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #333;
+      }
+
+      .member-card-content p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .member-tags .badge {
+        background-color: #f0f0f0;
+        color: #555;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-weight: normal;
+      }
+
+      /* Carousel navigation arrows */
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 5%;
+        opacity: 1;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 50%;
+        padding: 15px;
+        filter: invert(100%);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .member-card {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .member-card-img-placeholder {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .section-header-wrapper {
+          width: 100%;
+          left: 0;
+          text-align: center;
+          border-bottom-right-radius: 0;
+          padding: 15px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+          top: 30%; /* Adjust arrow position on smaller screens */
+        }
+      }

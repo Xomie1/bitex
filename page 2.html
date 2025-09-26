@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>会社概要 - BITEX</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCVxw2Y0VEH5JY8d3OZ1p6y"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">
+          <img src="img/logo.png" alt="BITEX Logo" />
+        </div>
+
+        <!-- Mobile menu toggle button -->
+        <!-- <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button> -->
+
+        <nav class="main-nav" id="main-nav">
+          <ul>
+            <li>
+              <a href="#">HOME</a>
+              <span class="subtext">ホーム</span>
+            </li>
+            <!-- COMPANY with dropdown -->
+            <li class="dropdown">
+              <a href="#" class="dropbtn">COMPANY</a>
+              <span class="subtext">事業内容</span>
+              <div class="dropdown-menu">
+                <a href="#">不動産事業</a>
+                <a href="#">エネルギー事業</a>
+                <a href="#">再生医療事業</a>
+                <a href="#">IT事業</a>
+                <a href="#">海外進出サポート事業</a>
+                <a href="#">経営コンサルティング事業</a>
+              </div>
+            </li>
+
+            <li>
+              <a href="#">PROFILE</a>
+              <span class="subtext">会社概要</span>
+            </li>
+            <li>
+              <a href="#">NEWS</a>
+              <span class="subtext">ニュースお知らせ</span>
+            </li>
+            <!-- RECRUIT with dropdown -->
+            <li class="dropdown">
+              <a href="#" class="dropbtn">RECRUIT</a>
+              <span class="subtext">採用情報</span>
+              <div class="dropdown-menu">
+                <a href="#">採用情報</a>
+                <a href="#">募集職種</a>
+              </div>
+            </li>
+            <li>
+              <a href="#">INQUIRY</a>
+              <span class="subtext">お問い合わせ</span>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <div class="language-selector">
+            <button class="lang-btn active" data-lang="ja">Japanese</button>
+            <button class="lang-btn" data-lang="en">English</button>
+          </div>
+          <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div
+          id="lang-error"
+          style="display: none; color: red; margin-top: 8px; font-size: 0.95em"
+        >
+          Language switcher failed to load. Please check your internet
+          connection or disable ad-blockers.
+        </div>
+        <!-- Google Translate element container (hidden) -->
+        <div id="google_translate_element" style="display: none"></div>
+      </div>
+    </header>
+
+    <section class="hero-section">
+      <div class="hero-image">
+        <h1 class="hero-title">会社概要</h1>
+      </div>
+    </section>
+
+    <section class="breadcrumb-section">
+      <div class="breadcrumb-container">
+        <p><a href="#">HOME</a> > 会社概要</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <h1 class="page-title">BITEX HOLDINGS LLCについて</h1>
+
+      <main class="about-section2">
+        <p>
+          BITEX
+          HOLDINGSは「世界をつなぐ、新たな創造」を企業理念に掲げ、社会課題の本質に挑む多角的な事業をグローバルに展開しています。
+        </p>
+        <p>
+          当社は、不動産、エネルギー、再生医療、IT、経営コンサルティング、エンターテインメントの6つの主要事業を展開し、それぞれの領域において革新性と実効性を兼ね備えたソリューションを提供しています。
+        </p>
+        <p>
+          日本国内の上場企業で培った長年にわたる経営経験に基づき、BITEXでは「日本式のガバナンスと透明性」を経営の中核に据えています。コンプライアンス・国際商取引・ステークホルダーとの対話を重視し、国内外の投資家・行政・パートナー企業との信頼構築を継続的に行っています。
+        </p>
+        <p>
+          不動産領域では、アブダビ・東京・ロンドン・シンガポールを結ぶネットワークを活かし、高品質な住宅・商業不動産の取得、開発、管理を推進。中東では、日系企業としては初となるアブダビ現地法人を設立し、グローバル投資家と現地の信頼をつなぐ架け橋として評価されています。
+        </p>
+        <p>
+          エネルギー事業では、災害対応型の蓄電インフラをはじめとするレジリエンス・ソリューションを展開。国地方の自治体やデベロッパーと協働しつつ、中東・東南アジアなどへの「レジリエンスの輸出」にも注力しています。
+        </p>
+        <p>
+          ロンドン拠点の再生医療事業では、幹細胞治療、遺伝子編集、3Dバイオプリンティングなどの先端技術を活用し、医療の未来に貢献しております。
+        </p>
+        <p>
+          シンガポール拠点のIT事業では、AI・IoT・クラウド・ブロックチェーンを用いたDX支援やスマートシティ構想にも取り組んでいます。
+        </p>
+        <p>
+          経営コンサルティング分野では、グローバル展開を目指す日系企業を対象に、法人設立支援から財務戦略・市場調査・拠点選定までを包括的にサポート。さらに、エンターテインメント領域では、国際
+          音楽フェスや映像制作、多文化交流イベントを通じ、文化的価値の創造と発信を行っています。
+        </p>
+        <p>
+          東京、アブダビ、ロンドン、シンガポール、世界都市に拠点を設置し、多言語・多文化環境に対応した体制で、地域に根ざした事業展開と、国境を越えた協調連携を実現しています。
+        </p>
+        <p>
+          BITEX
+          HOLDINGSは、未来の都市・産業・暮らしを構想し、その実現に向けて事業・技術・文化を統合する「次世代のプラットフォーム企業」を目指しています。
+        </p>
+        <p>
+          「つなぐ力」で世界と世界を結び、「創る力」で次世代に輝ける社会を築いていく――私たちBITEXの存在意義です。
+        </p>
+      </main>
+    </div>
+
+    <div class="company-overview-container">
+      <div class="overview-title-box">
+        <h2 class="overview-title">会社概要</h2>
+      </div>
+    </div>
+
+    <div class="container">
+      <div
+        class="company-info-table"
+        style="padding-left: 40px; border-bottom: 2px solid #111"
+      >
+        <div class="table-row table-header">
+          <div class="table-cell item-header">項目</div>
+          <div class="table-cell content-header">内容</div>
+        </div>
+
+        <div class="table-row">
+          <div class="table-cell item">会社名</div>
+          <div class="table-cell content">BITEX HOLDINGS</div>
+        </div>
+
+        <div class="table-row">
+          <div class="table-cell item">所在地</div>
+          <div class="table-cell content">
+            Etihad Towers,West Corniche Road,Opposite Emirates Palace, Abu
+            Dhabi, United Arab Emirates
+          </div>
+        </div>
+
+        <div class="table-row">
+          <div class="table-cell item">代表者</div>
+          <div class="table-cell content">代表取締役社長 上野真司</div>
+        </div>
+
+        <div class="table-row">
+          <div class="table-cell item">拠点</div>
+          <div class="table-cell content">
+            日本、アブダビ、ロンドン、シンガポール
+          </div>
+        </div>
+
+        <div class="table-row">
+          <div class="table-cell item">資本金</div>
+          <div class="table-cell content">50,000,000円 (連結含む)</div>
+        </div>
+
+        <div class="table-row">
+          <div class="table-cell item">事業内容</div>
+          <div class="table-cell content">
+            不動産事業、エネルギー事業、再生医療事業、海外進出サポート、経営コンサルティング
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="company-overview-container">
+      <div class="overview-title-box">
+        <h2 class="overview-title">理念・価値観</h2>
+      </div>
+    </div>
+
+    <section class="core-values-section">
+      <div class="value-block">
+        <div class="image">
+          <img src="/img/Group 1224.png" alt="Your Image" />
+        </div>
+        <div class="text-content">
+          <p>
+            BITEX
+            HOLDINGSは、産業・文化・地域の多元的拠点において、地域と地域、信と社会、現在と未来を媒介する存在として、創造的知性の実装を試みる。私たちは、時代の要請に応答しながら、分断された世界に矛盾と協働の回路を拓き、普遍的価値としての「創造」の接続的生産を使命とします。
+          </p>
+        </div>
+      </div>
+
+      <div class="value-block">
+        <div class="image">
+          <img src="/img/Group 1222.png" alt="Your Image" />
+        </div>
+        <div class="text-content">
+          <p>
+            「未来を創る価値を提供し、地域社会とともに成長する」BITEX
+            HOLDINGSは、世界が直面する構造的課題である都市の再編・医療の進化・エネルギーの変革、情報技術の実装・文化の越境に対し、実効性と持続性を兼ね備えた事業を展開しています。私たちは、多様なステークホルダーと信頼関係を築きながら、グローバルとローカルの視点に立ち、社会貢献を通じて自己成長と価値創造を実現することを約束していきます。
+          </p>
+        </div>
+      </div>
+
+      <div class="value-block">
+        <div class="image">
+          <img src="/img/Group 1223.png" alt="Your Image" />
+        </div>
+        <div class="text-content">
+          <p>
+            BITEX
+            HOLDINGSが目指す未来は、単なる技術革新や事業成長にとどまるものではありません。私たちは、不動産・エネルギー・再生医療・IT・経営支援・エンターテイメントといった多様な知見と経験を結集し、社会の根幹に触れるような構造的な変化を生み出す存在でありたいと考えています。既存の市場、分野、文化、そして国境を越え、人と社会の可能性を磨くプラットフォームとして、BITEXは世界の多様性と真正面から向き合い、それを価値創造の源泉として捉えています。私たちは、都市空間の再構築・医療の再編・エネルギーの再編・経済活動の再設計といったテーマに対し、単一のソリューションではなく、多角的・多層的なアプローチによって応えてまいります。
+          </p>
+        </div>
+      </div>
+
+      <div class="value-block values-grid-block">
+        <div class="image">
+          <img src="/img/Group 1223 (1).png" alt="Your Image" />
+        </div>
+        <div class="values-grid-container">
+          <div class="grid-item">
+            <h3>信頼と透明性の徹底</h3>
+            <p>
+              高い倫理観と社会的責任に基づく経営を貫き、すべての関係者との健全な関係を築きます。
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3>創造への飽くなき挑戦</h3>
+            <p>
+              現状を疑い、未来の選択肢を広げる新たな価値の創出に挑戦します。
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3>多様性と共生等の尊重</h3>
+            <p>
+              国籍、文化、言語、専門性の違いを尊重し、相互理解のもとでの共創を推進します。
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3>持続可能な社会への貢献</h3>
+            <p>
+              気候・医療・都市・経済の領域において、次世代に責任ある選択を積み重ねます。
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3>顧客中心の価値設計</h3>
+            <p>
+              顧客の本質的ニーズを深く捉え、期待を超えるソリューションを追求します。
+            </p>
+          </div>
+          <div class="grid-item">
+            <h3>グローバルな俯瞰力</h3>
+            <p>
+              地政学的観測と制度的知見を兼ね備えた意思決定を行い、国際社会の中での信頼性を確立します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="company-overview-container">
+      <div class="overview-title-box">
+        <h2 class="overview-title">沿革</h2>
+      </div>
+    </div>
+
+    <section class="timeline-section">
+      <div class="timeline-line" style="border-bottom: 2px solid #111">
+        <div class="timeline-container">
+          <div class="timeline-event left-event">
+            <div class="timeline-content">
+              <h3 class="event-date">2018年4月18日</h3>
+              <h4 class="event-title">シンガポール拠点を開設</h4>
+              <p class="event-description">
+                IT・デジタル領域に特化した法人「BITEX
+                PTE.LTD」を設立し、ASEAN市場への展開を本格化。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-event right-event">
+            <div class="timeline-content">
+              <h3 class="event-date">2023年2月10日</h3>
+              <h4 class="event-title">ロンドン拠点を開設</h4>
+              <p class="event-description">
+                再生医療およびバイオテクノロジー事業を担う「HJ.LTD」を設立し、欧州拠点として始動。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-event left-event">
+            <div class="timeline-content">
+              <h3 class="event-date">2023年7月14日</h3>
+              <h4 class="event-title">日本拠点を開設</h4>
+              <p class="event-description">
+                グループの国内事業統括法人「BITEX Co.
+                Ltd.」を東京都に設立し、国内基盤を強化。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-event right-event">
+            <div class="timeline-content">
+              <h3 class="event-date">2023年11月18日</h3>
+              <h4 class="event-title">アブダビ拠点を開設</h4>
+              <p class="event-description">
+                不動産事業の中東展開を担う「BITEX REAL ESTATE BROKERAGE
+                LLC」を設立。
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-event left-event">
+            <div class="timeline-content">
+              <h3 class="event-date">2024年11月</h3>
+              <h4 class="event-title">日本国内でエネルギー事業を始動</h4>
+              <p class="event-description">
+                レジリエンス型蓄電インフラを展開する「BITEX
+                SOLUTIONS」事業開始、自治体・企業と連携した...
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="company-overview-container">
+      <div class="overview-title-box">
+        <h2 class="overview-title">役員紹介</h2>
+      </div>
+    </div>
+
+    <div class="member-introduction-section">
+      <div class="section-header-wrapper">
+        <h2 class="section-header">役員紹介</h2>
+      </div>
+      <div class="container carousel-container">
+        <div id="memberCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner p-4">
+            <div class="carousel-item active">
+              <div class="member-card">
+                <div class="member-card-img-placeholder"></div>
+                <div class="member-card-content">
+                  <h3>代表取締役社長</h3>
+                  <h4>上野 實司</h4>
+                  <p>
+                    2020年に東証上場企業の代表取締役社長を退任。約120年に渡り約4,000億円以上の不動産や金融商品の取引を行う。
+                  </p>
+                  <div class="member-tags">
+                    <span class="badge text-bg-light">宅地建物取引士</span>
+                    <span class="badge text-bg-light">弁護士</span>
+                    <span class="badge text-bg-light">証券アナリスト</span>
+                    <span class="badge text-bg-light">DIDライセンス</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="carousel-item">
+              <div class="member-card">
+                <div class="member-card-img-placeholder"></div>
+                <div class="member-card-content">
+                  <h3>取締役</h3>
+                  <h4>田中 健太</h4>
+                  <p>
+                    不動産投資の専門家として、数々の大型プロジェクトを成功に導く。市場分析と戦略立案において高い評価を得ている。
+                  </p>
+                  <div class="member-tags">
+                    <span class="badge text-bg-light">不動産鑑定士</span>
+                    <span class="badge text-bg-light"
+                      >ファイナンシャルプランナー</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#memberCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#memberCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </body>
+</html>
