@@ -18,6 +18,16 @@
     />
   </head>
   <body>
+    <div id="skeleton-loader">
+  <div class="skeleton-logo"></div>
+  <div class="skeleton-lines">
+    <div class="skeleton-line short"></div>
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line"></div>
+    <div class="skeleton-line"></div>
+  </div>
+</div>
+
     <header>
       <div class="header-container">
         <div class="logo">
@@ -202,9 +212,10 @@
         </div>
       </div>
     </section>
-    <section style="background-color: black; padding: 35px">
+    <section class="locations" style="background-color: black; padding: 35px;">
+      <div >
       <!-- Desktop Grid -->
-      <div class="locations-grid">
+      <div class="locations-grid" style="justify-content: center; align-items: flex-start;">
         <div class="left-column">
           <div class="card" style="box-shadow: 0 12px 24px rgba(0, 0, 0, 1)">
             <div class="card-content light">
@@ -392,6 +403,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
+      </div>
       </div>
     </section>
 
@@ -669,7 +681,14 @@
           }
         });
       });
+      window.addEventListener('load', function () {
+    const loader = document.getElementById('skeleton-loader');
+    if (loader) {
+      loader.style.display = 'none';
+    }
+  });
     </script>
+
     <script src="script.js"></script>
   </body>
 </html>
