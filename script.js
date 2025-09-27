@@ -419,6 +419,7 @@ function googleTranslateElementInit() {
 // });
 
 // Optimized Universal Translation Manager
+// Optimized Universal Translation Manager
 class OptimizedTranslationManager {
   constructor() {
     this.currentLanguage = 'ja';
@@ -454,29 +455,115 @@ class OptimizedTranslationManager {
       '.card-content h2, .card-content p'
     ];
     
-    const elementsToTranslate = document.querySelectorAll(primarySelectors.join(', '));
+    // Separate footer selectors for better targeting
+    const footerSelectors = [
+      '.footer-column h3',
+      '.footer-column ul li a',
+      '.copyright',
+      '.site-footer p:not(.copyright)', // Avoid duplicate selection
+      'footer h3',
+      'footer ul li a',
+      'footer p'
+    ];
+    
+    // Specific selectors for nested content like business segments
+    const nestedContentSelectors = [
+      '.segment-item', // Individual business segment spans
+      '.business-segments-list span' // Backup selector
+    ];
+    
+    // Combine all selectors
+    const allSelectors = [...primarySelectors, ...footerSelectors, ...nestedContentSelectors];
+    const elementsToTranslate = document.querySelectorAll(allSelectors.join(', '));
     let savedCount = 0;
     
-    // Use DocumentFragment for batch DOM operations
+    // Process main elements
     elementsToTranslate.forEach((element) => {
       if (this.shouldSkipElement(element)) return;
       
-      const directText = this.getDirectTextContent(element);
-      if (!directText || directText.length < 2) return;
+      // Handle different types of text content
+      let textContent = '';
+      
+      // For business segments and similar nested structures
+      if (element.classList.contains('segment-item') || element.matches('.business-segments-list span')) {
+        textContent = element.textContent.trim();
+      } else {
+        textContent = this.getDirectTextContent(element);
+      }
+      
+      if (!textContent || textContent.length < 2) return;
       
       const key = `element_${savedCount}`;
       element.setAttribute('data-translate-key', key);
       
       this.originalContent.set(key, {
-        text: directText,
+        text: textContent,
         element: element,
-        needsTranslation: this.needsTranslation(directText)
+        needsTranslation: this.needsTranslation(textContent)
       });
       
       savedCount++;
     });
     
+    // Additional pass for footer elements that might be missed
+    this.addFooterElementsManually(savedCount);
+    
     console.log(`Optimized: Saved ${savedCount} elements for translation`);
+    
+    // Debug: Log footer elements specifically
+    this.debugFooterElements();
+  }
+  
+  addFooterElementsManually(currentCount) {
+    // Manual check for footer elements that might be missed
+    const footerContainer = document.querySelector('.site-footer, footer');
+    if (!footerContainer) return currentCount;
+    
+    // Find all text-containing elements in footer
+    const footerTextElements = footerContainer.querySelectorAll('*');
+    
+    footerTextElements.forEach((element) => {
+      // Skip if already processed
+      if (element.hasAttribute('data-translate-key')) return;
+      if (this.shouldSkipElement(element)) return;
+      
+      const directText = this.getDirectTextContent(element);
+      if (!directText || directText.length < 2) return;
+      if (!this.needsTranslation(directText)) return;
+      
+      const key = `footer_element_${currentCount}`;
+      element.setAttribute('data-translate-key', key);
+      
+      this.originalContent.set(key, {
+        text: directText,
+        element: element,
+        needsTranslation: true
+      });
+      
+      currentCount++;
+      console.log(`Added footer element: "${directText.substring(0, 30)}..."`);
+    });
+    
+    return currentCount;
+  }
+  
+  debugFooterElements() {
+    const footerElements = document.querySelectorAll('footer *, .site-footer *');
+    console.log('Footer elements found:', footerElements.length);
+    
+    footerElements.forEach((el, index) => {
+      if (el.textContent && el.textContent.trim().length > 1) {
+        const hasJapanese = /[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]/.test(el.textContent);
+        if (hasJapanese) {
+          console.log(`Footer element ${index}:`, {
+            tagName: el.tagName,
+            className: el.className,
+            text: el.textContent.trim().substring(0, 50),
+            hasTranslateKey: el.hasAttribute('data-translate-key')
+          });
+        }
+      }
+    });
   }
   
   shouldSkipElement(element) {
@@ -746,7 +833,15 @@ class OptimizedTranslationManager {
   }
   
   replaceTextNodes(element, newText) {
-    // Optimized text node replacement
+    // Special handling for segment items and other span elements that contain full text
+    if (element.classList.contains('segment-item') || 
+        element.matches('.business-segments-list span') ||
+        element.tagName.toLowerCase() === 'span') {
+      element.textContent = newText;
+      return;
+    }
+    
+    // Optimized text node replacement for other elements
     const walker = document.createTreeWalker(
       element,
       NodeFilter.SHOW_TEXT,
@@ -855,4 +950,92 @@ class OptimizedTranslationManager {
 document.addEventListener('DOMContentLoaded', () => {
   window.translationManager = new OptimizedTranslationManager();
   console.log('Optimized Universal Translation Manager initialized');
+});
+
+
+
+// Initialize both carousels when DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    // Recruit Section Carousel
+    const recruitSwiper = new Swiper('.main-carousel', {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        loop: true,
+        loopAdditionalSlides: 1, // Prevent loop warnings
+        
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        
+        breakpoints: {
+            320: {
+                slidesPerView: 1.3,
+                spaceBetween: 20,
+                centeredSlides: true,
+            },
+            768: {
+                slidesPerView: 'auto',
+                spaceBetween: 30,
+                centeredSlides: true,
+            },
+            1024: {
+                slidesPerView: 'auto',
+                spaceBetween: 30,
+                centeredSlides: true,
+            }
+        }
+    });
+
+    // Country Cards Carousel (Mobile Only) - Fixed infinite loop
+    const countrySwiper = new Swiper('.locations-carousel', {
+        slidesPerView: 1, // Reduced to 1 to eliminate loop warnings
+        centeredSlides: true,
+        spaceBetween: 15,
+        
+        // Fixed loop configuration for 4 slides
+        loop: true,
+        loopAdditionalSlides: 2,
+        
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        
+        // Navigation arrows
+        navigation: {
+            nextEl: '.locations-carousel .swiper-button-next',
+            prevEl: '.locations-carousel .swiper-button-prev',
+        },
+        
+        pagination: {
+            el: '.locations-carousel .swiper-pagination',
+            clickable: true,
+        },
+        
+        // Smooth transitions
+        speed: 600,
+        effect: 'slide',
+        
+        // Only enable on mobile
+        breakpoints: {
+            769: {
+                enabled: false,
+            }
+        }
+    });
+
+    // Disable country carousel on desktop resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            countrySwiper.disable();
+        } else {
+            countrySwiper.enable();
+        }
+    });
 });
