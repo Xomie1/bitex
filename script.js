@@ -964,7 +964,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loopAdditionalSlides: 1, // Prevent loop warnings
         
         autoplay: {
-            delay: 4000,
+            delay: 3000,
             disableOnInteraction: false,
         },
         
@@ -1003,7 +1003,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loopAdditionalSlides: 2,
         
         autoplay: {
-            delay: 5000,
+            delay: 4000,
             disableOnInteraction: false,
         },
         
@@ -1038,4 +1038,243 @@ document.addEventListener('DOMContentLoaded', function () {
             countrySwiper.enable();
         }
     });
+});
+
+// SCROLL ANIMATIONS - Add this to your script.js file
+
+// Intersection Observer for scroll animations
+class ScrollAnimationManager {
+  constructor() {
+    this.elements = [];
+    this.observer = null;
+    this.init();
+  }
+
+  init() {
+    // Set up intersection observer
+    this.setupObserver();
+    
+    // Add animation classes to elements
+    this.setupAnimations();
+    
+    // Add parallax and other effects
+    this.setupParallax();
+    
+    // Add navbar scroll effect
+    this.setupNavbarScroll();
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => this.startObserving());
+    } else {
+      this.startObserving();
+    }
+  }
+
+  setupObserver() {
+    const options = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.animateElement(entry.target);
+        }
+      });
+    }, options);
+  }
+
+  setupAnimations() {
+    // ===== GLOBAL NETWORK SECTION =====
+    const networkHeader = document.querySelector('.network-header2 h2');
+    const networkSubtitle = document.querySelector('.network-header2 .subtitle');
+    if (networkHeader) {
+      networkHeader.classList.add('scroll-animate');
+      networkHeader.setAttribute('data-animation', 'animate-fade-right');
+    }
+    if (networkSubtitle) {
+      networkSubtitle.classList.add('scroll-animate');
+      networkSubtitle.setAttribute('data-animation', 'animate-fade-right');
+      networkSubtitle.setAttribute('data-delay', '0.2');
+    }
+
+    // Country cards
+    const countryCards = document.querySelectorAll('.card');
+    countryCards.forEach((card, index) => {
+      card.classList.add('scroll-animate', 'card-hover-enhance');
+      card.setAttribute('data-animation', 'animate-scale');
+      card.setAttribute('data-delay', (index % 4) * 0.15);
+    });
+
+    // ===== NEWS SECTION =====
+    const newsHeader = document.querySelector('.news-left h2');
+    const newsSubtitle = document.querySelector('.news-left p');
+    const newsButton = document.querySelector('.read-more-button');
+    
+    if (newsHeader) {
+      newsHeader.classList.add('scroll-animate');
+      newsHeader.setAttribute('data-animation', 'animate-fade-left');
+    }
+    if (newsSubtitle) {
+      newsSubtitle.classList.add('scroll-animate');
+      newsSubtitle.setAttribute('data-animation', 'animate-fade-left');
+      newsSubtitle.setAttribute('data-delay', '0.2');
+    }
+    if (newsButton) {
+      newsButton.classList.add('scroll-animate');
+      newsButton.setAttribute('data-animation', 'animate-fade-left');
+      newsButton.setAttribute('data-delay', '0.4');
+    }
+
+    // News items
+    const newsItems = document.querySelectorAll('.news-item');
+    newsItems.forEach((item, index) => {
+      item.classList.add('scroll-animate');
+      item.setAttribute('data-animation', 'animate-fade-right');
+      item.setAttribute('data-delay', index * 0.1);
+    });
+
+    // ===== RECRUIT SECTION =====
+    const recruitHeader = document.querySelector('.recruit-header h1');
+    const recruitSubtitle = document.querySelector('.recruit-header p');
+    
+    if (recruitHeader) {
+      recruitHeader.classList.add('scroll-animate');
+      recruitHeader.setAttribute('data-animation', 'animate-fade-up');
+    }
+    if (recruitSubtitle) {
+      recruitSubtitle.classList.add('scroll-animate');
+      recruitSubtitle.setAttribute('data-animation', 'animate-fade-up');
+      recruitSubtitle.setAttribute('data-delay', '0.3');
+    }
+
+    // Recruit images
+    const recruitImages = document.querySelectorAll('.image-card, .swiper-slide .image-card');
+    recruitImages.forEach((img, index) => {
+      img.classList.add('scroll-animate');
+      img.setAttribute('data-animation', 'animate-scale');
+      img.setAttribute('data-delay', (index % 5) * 0.1);
+    });
+  }
+
+  animateElement(element) {
+    const animation = element.getAttribute('data-animation');
+    const delay = parseFloat(element.getAttribute('data-delay')) || 0;
+    
+    if (animation) {
+      setTimeout(() => {
+        element.classList.add(animation);
+      }, delay * 1000);
+    }
+    
+    // Remove from observer after animation
+    this.observer.unobserve(element);
+  }
+
+  startObserving() {
+    const animatedElements = document.querySelectorAll('.scroll-animate');
+    animatedElements.forEach(element => {
+      this.observer.observe(element);
+    });
+  }
+
+  setupParallax() {
+    // Parallax disabled to prevent layout issues
+    // If you want parallax later, we can add it without affecting layout
+  }
+
+  setupNavbarScroll() {
+    const header = document.querySelector('header');
+    let lastScrollTop = 0;
+    
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollTop > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, { passive: true });
+  }
+}
+
+// Enhanced hover effects for cards
+function setupEnhancedHovers() {
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-8px) scale(1.02)';
+      this.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.15)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+      this.style.boxShadow = '0 12px 24px rgba(0, 0, 0, 0.1)';
+    });
+  });
+  
+  // Enhanced button hovers
+  const buttons = document.querySelectorAll('.read-more-button, .lang-btn');
+  buttons.forEach(button => {
+    button.addEventListener('mouseenter', function() {
+      if (!this.classList.contains('lang-btn')) {
+        this.style.transform = 'translateY(-2px)';
+        this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+      }
+    });
+    
+    button.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('lang-btn')) {
+        this.style.transform = 'translateY(0)';
+        this.style.boxShadow = 'none';
+      }
+    });
+  });
+}
+
+// Smooth scroll for anchor links
+function setupSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+}
+
+// Loading animation for images
+function setupImageLoading() {
+  const images = document.querySelectorAll('img');
+  images.forEach(img => {
+    if (!img.complete) {
+      img.classList.add('image-loading');
+      img.addEventListener('load', function() {
+        this.classList.remove('image-loading');
+      });
+    }
+  });
+}
+
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize scroll animations
+  window.scrollAnimationManager = new ScrollAnimationManager();
+  
+  // Setup other enhancements
+  setupEnhancedHovers();
+  setupSmoothScroll();
+  setupImageLoading();
+  
+  console.log('Scroll animations initialized successfully!');
 });
