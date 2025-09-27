@@ -73,7 +73,7 @@ body {
 /* Header Styles */
 header {
   background-color: #fff;
-  padding: 15px 20px;
+  padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   width: 100%;
@@ -99,6 +99,10 @@ header {
   display: none;
 }
 /* Navigation Menu */
+.main-nav:hover a{
+  text-decoration: none;
+  color: #555;
+}
 .main-nav ul {
   list-style: none;
   padding: 0;
@@ -114,12 +118,14 @@ header {
   text-align: center;
 }
 
+
+
 .main-nav a {
   text-decoration: none;
-  color: #555;
+  color: #111;
   font-size: 16px; /* Increased from 14px */
   font-weight: 500;
-  transition: color 0.3s;
+  /* transition: color 0.3s; */
   white-space: nowrap;
 }
 
@@ -132,6 +138,7 @@ header {
 .dropdown {
   position: relative;
   display: inline-block;
+  text-decoration: none;
 }
 
 /* Dropdown Content (Hidden by Default) */
@@ -143,9 +150,9 @@ header {
   justify-items: left;
   padding-left: 20px;
   background-color: #f1f1f1;
-  min-width: 175px;
-  width: fit-content;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  min-width: fit-content;
+  width: 230px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9);
   z-index: 9999;
 }
 
@@ -163,8 +170,35 @@ header {
   border-bottom: 2px solid black; 
   color: #111 ;
   text-decoration: none;
+  margin-left: 11px;
+}
+/* Add dropdown arrow using CSS */
+.dropdown .dropbtn::after {
+  content: "▼";
+  font-size: 10px;
+  margin-left: 5px;
+  color: #777;
+  transition: transform 0.3s ease;
 }
 
+/* Rotate arrow when dropdown is hovered */
+.dropdown:hover .dropbtn::after {
+  transform: rotate(180deg);
+}
+
+/* Alternative: Use a more subtle triangle */
+.dropdown .dropbtn::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #777;
+  margin-left: 8px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-menu {
   display: block;
@@ -177,7 +211,7 @@ header {
   cursor: pointer;
   padding: 5px;
   z-index: 1001;
-  border: 1px solid #333333;
+  border: none;
   border-radius: 8px;
   background-color: #ffffff;
   outline: none; /* Remove focus outline */
@@ -226,33 +260,41 @@ header {
 
 .language-selector {
   display: flex;
-  border: 1px solid #ccc;
-  gap: 10px;
+  /* ❌ REMOVE THE BORDER FROM HERE */
+  border: none; 
+  gap: 10px; /* This gap now creates space between the button borders */
+  padding: 0; /* Ensure no extra padding is interfering */
 }
 
+/* Base style for the buttons */
 .lang-btn {
   background: none;
-  border: none;
+  border: 1px solid #ccc; /* ✅ ADD THE BORDER HERE */
   padding: 8px 15px;
   cursor: pointer;
-  font-size: 14px; /* Increased from 12px */
+  font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
   transition: all 0.3s;
 }
 
+/* Styles for the active button */
 .lang-btn.active {
   background-color: #000;
   color: #fff;
+  border-color: #000; /* Ensure active border is black/solid */
 }
 
-.lang-btn:hover {
-  background-color: #f0f0f0;
-}
-
+/* Styles for non-active buttons */
 .lang-btn:not(.active) {
   background-color: #fff;
   color: #000;
+  border-color: #ccc; /* Ensure non-active border is light */
+}
+
+/* Hover effect on non-active buttons */
+.lang-btn:not(.active):hover {
+  background-color: #f0f0f0;
 }
 
 /* Main Video Section */
@@ -365,7 +407,7 @@ header {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 100px 1fr; /* 100px for the label, 1fr for the content */
-  gap: 10px; /* Space between the label and content */
+  gap: 20px;/* Space between the label and content */
 }
 
 /* 1. Style for individual items (Company Name, Business Description) */
@@ -394,6 +436,7 @@ header {
   color: #555;
   line-height: 1.6;
   padding: 12px 0;
+  margin-left: 37px;
   border-top: 1px solid #eee; /* Apply top border here for consistency */
 }
 
@@ -792,6 +835,7 @@ header {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+  padding: 6px;
 }
 
 .recruit-track {
@@ -1341,47 +1385,70 @@ header {
     display: block;
   }
   
-  /* Compressed Language Selector */
-  .language-selector {
-    order: 1;
-    border: 1px solid #ccc;
-    border-right: none;
-    gap: 4;
-    margin-right: 4px;
-  }
-  
-  /* Compressed language selector for mobile - JP/EN */
-  .lang-btn {
-    padding: 6px 8px;
-    font-size: 10px;
-    min-width: 30px;
-    position: relative;
-    overflow: hidden;
-    text-indent: -9999px;
-  }
-  
-    .lang-btn::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-indent: 0;
-    font-size: 10px;
-    font-weight: 500;
-  }
-  
-  .lang-btn[data-lang="ja"]::after {
-    content: "JP";
-  }
-  
-  .lang-btn[data-lang="en"]::after {
-    content: "EN";
-  }
-  
-  .lang-btn.active::after {
-    color: #fff;
-  }
+/* Compressed Language Selector */
+.language-selector {
+  order: 1;
+  /* ❌ REMOVE ALL BORDERS FROM THE CONTAINER */
+  border: none;
+  /* ✅ Fix: Add unit to gap */
+  gap: 4px; 
+  margin-right: 4px;
+}
+
+/* Compressed language selector for mobile - JP/EN */
+.lang-btn {
+  padding: 6px 8px;
+  font-size: 10px;
+  min-width: 30px;
+  position: relative;
+  overflow: hidden;
+  text-indent: -9999px;
+  background-color: #fff;
+  /* Ensure no residual borders on the button itself */
+  border: none; 
+  border-right: none;
+}
+
+.lang-btn.active {
+   background-color: #000;
+  color: #fff;
+  z-index: 2; 
+}
+/* ✅ NEW: Apply the separator line to the English button */
+.lang-btn[data-lang="en"] {
+    /* Adds the vertical line between the JP and EN buttons */
+    border-left: 1px solid #ccc; 
+}
+
+/* .lang-btn[data-lang="ja"] {
+    /* Adds the vertical line between the JP and EN buttons *
+    color: black;
+    background-color: white;
+    border-right: 1px solid #111; 
+} */
+/* Styles for pseudo-content (JP/EN text) remain the same */
+.lang-btn::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-indent: 0;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.lang-btn[data-lang="ja"]::after {
+  content: "JP";
+}
+
+.lang-btn[data-lang="en"]::after {
+  content: "EN";
+}
+
+.lang-btn.active::after {
+  color: #fff;
+}
 
   /* Video section */
   .video-section {
@@ -1823,7 +1890,7 @@ header {
         flex: 1;
         width: 100%;
         text-align: center;
-        align-items: center;
+        align-items: left;
         padding-top: 0;
     }
     
@@ -1873,4 +1940,359 @@ header {
     .news-left h2 {
       font-size: 2rem;
     }
+}
+
+/* Define the slider viewport */
+.recruit-carousel-swiper {
+    padding: 30px 0;
+    overflow: hidden; 
+    /* Hide carousel on desktop by default */
+    display: none;
+}
+
+.main-carousel {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    /* CRITICAL: Add padding to expose the partial side slides */
+    padding: 0 10%; 
+}
+
+/* Define the size of each slide (adjust width as needed) */
+.main-carousel .swiper-slide {
+    width: 500px; /* Use a fixed width for the slides */
+    height: auto;
+    /* We will now control the scaling primarily on the image, so this can stay simple */
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Significantly scale down and dim side slides */
+.main-carousel .swiper-slide:not(.swiper-slide-active) {
+    opacity: 0.6; 
+    transform: scale(0.75);
+}
+
+/* Image styling (Base/Inactive Size) */
+.main-carousel .swiper-slide img {
+    display: block;
+    width: 100%;
+    /* 🛠️ FIX: Base height for inactive images (e.g., 300px) */
+    height: 300px; 
+    object-fit: cover;
+    
+    /* ✅ NEW: Add transition for smooth size change */
+    transition: all 0.3s ease; 
+}
+
+/* Pagination dot styling */
+.swiper-pagination-bullet-active {
+    background: #000 !important;
+}
+
+/* --- ✅ NEW: ACTIVE IMAGE SIZE INCREASE --- */
+
+/* Target the image inside the currently active (center) slide */
+.main-carousel .swiper-slide-active img {
+    /* Significantly increase height for more prominence */
+    height: 450px;
+    
+    /* Increase width to make it more prominent */
+    width: 320%; 
+    
+    /* Center the wider image within its slide */
+    margin-left: -10%;
+    
+    /* Ensure full opacity and no inherited transforms */
+    opacity: 1;
+    transform: none; 
+}
+
+/* Make the active slide itself larger and more prominent */
+.main-carousel .swiper-slide-active {
+    transform: scale(1.1);
+    opacity: 1;
+    z-index: 2;
+    position: relative;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    /* Hide desktop gallery on mobile */
+    .image-gallery {
+        display: none;
+    }
+    
+    /* Show carousel on mobile */
+    .recruit-carousel-swiper {
+        display: block;
+        padding: 20px 0;
+    }
+    
+    /* Make image overlay always visible on mobile */
+    .main-carousel .image-overlay {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+    }
+    
+    /* MOBILE CAROUSEL CONTAINER - Enable side previews */
+    .main-carousel {
+        padding: 0 15%; /* Less padding to show more of side slides */
+        overflow: visible; /* Allow side slides to be visible */
+    }
+    
+    /* MOBILE SLIDE SIZING - Show partial side slides */
+    .main-carousel .swiper-slide {
+        width: 95%; /* Take up most of viewport but leave room for sides */
+        margin: 0 auto;
+    }
+    
+    /* Side slides should be more dimmed and smaller */
+    .main-carousel .swiper-slide:not(.swiper-slide-active) {
+        opacity: 0.3; /* More transparent to match your image */
+        transform: scale(0.85); /* Smaller scale */
+    }
+    
+    /* Active slide - full prominence */
+    .main-carousel .swiper-slide-active {
+        transform: scale(1);
+        opacity: 1;
+        z-index: 2;
+    }
+    
+    /* IMAGE SIZING FOR MOBILE */
+    .main-carousel .swiper-slide img {
+        height: 400px; /* Taller images for mobile */
+        width: 100%;
+        object-fit: cover;
+        border-radius: 8px; /* Optional: rounded corners */
+    }
+    
+    /* Active slide image - no size changes, just ensure it's prominent */
+    .main-carousel .swiper-slide-active img {
+        height: 400px;
+        width: 100%;
+        margin-left: 0;
+    }
+    
+    /* OVERLAY ADJUSTMENTS FOR MOBILE */
+    .main-carousel .image-overlay {
+        background-color: rgba(0, 0, 0, 0.8) !important;
+        padding: 20px !important;
+        border-radius: 0 0 8px 8px; /* Match image border radius */
+    }
+    
+    .main-carousel .image-overlay p {
+        font-size: 1.2rem !important;
+        font-weight: 600 !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .main-carousel .image-overlay .read-more {
+        font-size: 1rem !important;
+        color: #00bcd4 !important;
+    }
+}
+
+/* Country Cards Mobile Carousel - Add to your style.css */
+
+/* Hide the Bootstrap mobile carousel on mobile */
+@media (max-width: 768px) {
+  .mobile-carousel {
+    display: none !important;
+  }
+  
+  /* Show new Swiper carousel instead */
+  .locations-swiper-mobile {
+    display: block !important;
+  }
+}
+
+/* Desktop - keep existing grid, hide mobile swiper */
+@media (min-width: 769px) {
+  .locations-swiper-mobile {
+    display: none !important;
+  }
+}
+
+/* Mobile Country Carousel Styles */
+.locations-swiper-mobile {
+  display: none;
+  padding: 30px 0;
+  overflow: hidden;
+}
+
+.locations-carousel {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0 10%; /* Padding to show side previews */
+}
+
+/* Mobile slide sizing */
+.locations-carousel .swiper-slide {
+  width: 85%; /* Take up most of viewport but leave room for sides */
+  height: auto;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Side slides - dimmed and scaled down */
+.locations-carousel .swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.3; /* Very dim to match your image */
+  transform: scale(0.85);
+}
+
+/* Active slide - full prominence */
+.locations-carousel .swiper-slide-active {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 2;
+  position: relative;
+}
+
+/* Country card styling for mobile carousel */
+.locations-carousel .card {
+  width: 100%;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+/* Card image in mobile carousel */
+.locations-carousel .card-image {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+}
+
+/* Card content in mobile carousel */
+.locations-carousel .card-content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure proper background colors for light/dark cards */
+.locations-carousel .card-content.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.locations-carousel .card-content.dark {
+  background-color: #4a4a4a;
+  color: #f0f0f0;
+}
+
+/* Typography for mobile cards */
+.locations-carousel .card-content .tag {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.locations-carousel .card-content h2 {
+  font-size: 1.8rem;
+  margin: 0 0 1.5rem 0;
+  font-weight: 600;
+}
+
+.locations-carousel .card-content p {
+  font-size: 1rem;
+  margin: 0.3rem 0;
+  line-height: 1.5;
+}
+
+.locations-carousel .card-content .read-more {
+  display: inline-block;
+  margin-top: auto;
+  padding-top: 1.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  color: teal;
+}
+
+.locations-carousel .card-content .read-more:hover {
+  transform: translateX(4px);
+}
+
+/* Light theme text colors */
+.locations-carousel .light .tag { color: #888; }
+.locations-carousel .light p { color: #666; }
+.locations-carousel .light .read-more { color: teal; }
+
+/* Dark theme text colors */
+.locations-carousel .dark .tag { color: #ccc; }
+.locations-carousel .dark p { color: #ddd; }
+.locations-carousel .dark .read-more { color: teal; }
+
+/* Pagination styling */
+.locations-carousel .swiper-pagination {
+  bottom: -30px;
+}
+
+.locations-carousel .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.locations-carousel .swiper-pagination-bullet-active {
+  background: #fff;
+}
+
+/* Navigation arrows styling */
+.locations-carousel .swiper-button-prev,
+.locations-carousel .swiper-button-next {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px; /* Center vertically */
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.locations-carousel .swiper-button-prev:hover,
+.locations-carousel .swiper-button-next:hover {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Position arrows closer to the slides */
+.locations-carousel .swiper-button-prev {
+  left: 5px;
+}
+
+.locations-carousel .swiper-button-next {
+  right: 5px;
+}
+
+/* Make arrows smaller and less intrusive */
+.locations-carousel .swiper-button-prev:after,
+.locations-carousel .swiper-button-next:after {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Hide arrows when sliding to maintain clean look during transitions */
+.locations-carousel.swiper-container-pointer-events .swiper-button-prev,
+.locations-carousel.swiper-container-pointer-events .swiper-button-next {
+  opacity: 0.7;
+}
+
+/* Show arrows more prominently when carousel is focused/hovered */
+.locations-swiper-mobile:hover .swiper-button-prev,
+.locations-swiper-mobile:hover .swiper-button-next {
+  opacity: 1;
 }
