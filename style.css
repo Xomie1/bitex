@@ -5,7 +5,7 @@ body {
   -webkit-font-smoothing: antialiased;
   color: #333;
   top: 0 !important;
-  font-size: 16px; /* Increased base font size */
+  font-size: 19px; /* Increased base font size */
   size-adjust: auto;
 }
 
@@ -151,7 +151,7 @@ header {
   padding-left: 20px;
   background-color: #f1f1f1;
   min-width: fit-content;
-  width: 230px;
+  width: fit-content;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.9);
   z-index: 9999;
 }
@@ -390,7 +390,7 @@ header {
 
 .about-header-container .subtitle {
   font-size: 14px;
-    font-weight: 400;
+  font-weight: 400;
   color: #555;
   margin-top: 5px;
 }
@@ -407,7 +407,7 @@ header {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 100px 1fr; /* 100px for the label, 1fr for the content */
-  gap: 20px;/* Space between the label and content */
+  gap: 25px;/* Space between the label and content */
 }
 
 /* 1. Style for individual items (Company Name, Business Description) */
@@ -457,7 +457,7 @@ header {
   flex-shrink: 0;
   font-weight: bold;
   font-size: 1.1rem; /* Increased from 1rem */
-  width: 150px;
+  width: 174px;
   color: #333;
 }
 
@@ -1363,6 +1363,7 @@ header {
     font-size: 16px;
     color: #333;
   }
+  
   
   .dropdown-menu {
     position: static;
@@ -2295,4 +2296,177 @@ header {
 .locations-swiper-mobile:hover .swiper-button-prev,
 .locations-swiper-mobile:hover .swiper-button-next {
   opacity: 1;
+}
+
+/* SCROLL ANIMATIONS - Add this to the end of your style.css */
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base class for scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transition: none;
+}
+
+/* Animation classes that get applied when element enters viewport */
+.scroll-animate.animate-fade-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.scroll-animate.animate-fade-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.scroll-animate.animate-fade-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.scroll-animate.animate-scale {
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+.scroll-animate.animate-slide-up {
+  animation: slideInFromBottom 1s ease-out forwards;
+}
+
+/* Staggered animations for multiple elements */
+.scroll-animate.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.scroll-animate.delay-2 {
+  animation-delay: 0.2s;
+}
+
+.scroll-animate.delay-3 {
+  animation-delay: 0.3s;
+}
+
+.scroll-animate.delay-4 {
+  animation-delay: 0.4s;
+}
+
+.scroll-animate.delay-5 {
+  animation-delay: 0.5s;
+}
+
+/* Enhanced hover effects for existing elements */
+.card-hover-enhance {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover-enhance:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.image-card {
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced button animations */
+.read-more-button, .lang-btn {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.read-more-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar scroll effect */
+header.scrolled {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
+}
+
+/* LAYOUT FIX: Ensure sections don't overlap */
+.hero-banner, .video-section, .about-section-intro, 
+.hero-content2, .locations, .news-section, 
+.recruit-section, .philosophy-section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Remove any unwanted transforms that might cause layout issues */
+.hero-banner, .video-section {
+  transform: none !important;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate,
+  .card-hover-enhance,
+  .image-card {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
 }
