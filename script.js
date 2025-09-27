@@ -1512,3 +1512,264 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Debugging: Add to browser console to manually hide preloader
 // window.preloaderManager.forceHide();
+
+// ===== EXPANDABLE MENU FUNCTIONALITY - ADD TO YOUR SCRIPT.JS =====
+
+// Enhanced Expandable Menu System for BITEX
+class BitexExpandableMenu {
+  constructor() {
+    this.expandableMenus = document.querySelectorAll('.expandable-menu');
+    this.isInitialized = false;
+    this.activeMenu = null;
+    this.init();
+  }
+
+  init() {
+    if (this.isInitialized) return;
+    
+    this.expandableMenus.forEach(menu => {
+      const trigger = menu.querySelector('.dropbtn');
+      if (trigger) {
+        // Remove existing event listeners to prevent conflicts
+        trigger.removeEventListener('click', this.handleMenuClick);
+        
+        // Add click event listener
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.toggleMenu(menu);
+        });
+      }
+    });
+
+    // Close menus when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.expandable-menu')) {
+        this.closeAllMenus();
+      }
+    });
+
+    // Handle escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.closeAllMenus();
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        this.closeAllMenus();
+      }
+    });
+
+    this.isInitialized = true;
+    console.log('BITEX Expandable Menu initialized');
+  }
+
+  toggleMenu(menu) {
+    const isCurrentlyExpanded = menu.classList.contains('expanded');
+    
+    // Close all other menus first
+    this.expandableMenus.forEach(otherMenu => {
+      if (otherMenu !== menu) {
+        this.closeMenu(otherMenu);
+      }
+    });
+
+    if (isCurrentlyExpanded) {
+      this.closeMenu(menu);
+      this.activeMenu = null;
+    } else {
+      this.openMenu(menu);
+      this.activeMenu = menu;
+    }
+  }
+
+  openMenu(menu) {
+    menu.classList.add('expanded');
+    
+    // Add ARIA attributes for accessibility
+    const trigger = menu.querySelector('.dropbtn');
+    const panel = menu.querySelector('.expandable-panel');
+    
+    if (trigger && panel) {
+      trigger.setAttribute('aria-expanded', 'true');
+      panel.setAttribute('aria-hidden', 'false');
+    }
+
+    // Focus management for keyboard users
+    if (document.activeElement === trigger) {
+      const firstLink = panel.querySelector('.expandable-link');
+      if (firstLink) {
+        setTimeout(() => firstLink.focus(), 100);
+      }
+    }
+  }
+
+  closeMenu(menu) {
+    menu.classList.remove('expanded');
+    
+    // Update ARIA attributes
+    const trigger = menu.querySelector('.dropbtn');
+    const panel = menu.querySelector('.expandable-panel');
+    
+    if (trigger && panel) {
+      trigger.setAttribute('aria-expanded', 'false');
+      panel.setAttribute('aria-hidden', 'true');
+    }
+  }
+
+  closeAllMenus() {
+    this.expandableMenus.forEach(menu => {
+      this.closeMenu(menu);
+    });
+    this.activeMenu = null;
+  }
+
+  // Method to programmatically open a specific menu
+  openMenuById(menuId) {
+    const menu = document.querySelector(`[data-menu="${menuId}"]`);
+    if (menu) {
+      this.closeAllMenus();
+      this.openMenu(menu);
+      this.activeMenu = menu;
+    }
+  }
+
+  // Method to check if any menu is currently open
+  hasOpenMenu() {
+    return this.activeMenu !== null;
+  }
+}
+
+// Integration with existing mobile menu functionality
+function enhanceMobileMenuWithExpandable() {
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mainNav = document.getElementById('main-nav');
+
+  if (mobileMenuToggle && mainNav) {
+    mobileMenuToggle.addEventListener('click', function() {
+      // Close all expandable menus when mobile menu is toggled
+      if (window.bitexExpandableMenu) {
+        window.bitexExpandableMenu.closeAllMenus();
+      }
+      
+      // Your existing mobile menu toggle logic
+      mobileMenuToggle.classList.toggle('active');
+      mainNav.classList.toggle('active');
+    });
+  }
+}
+
+// Initialize the expandable menu system
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize expandable menu
+  window.bitexExpandableMenu = new BitexExpandableMenu();
+  
+  // Enhance mobile menu integration
+  enhanceMobileMenuWithExpandable();
+  
+  // Keep your existing dropdown functionality for non-expandable items
+  const dropdownLinks = document.querySelectorAll('.dropdown:not(.expandable-menu) > a');
+  dropdownLinks.forEach((link) => {
+    link.addEventListener('click', function (e) {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const parent = this.parentElement;
+        parent.classList.toggle('open');
+      }
+    });
+  });
+});
+
+// Optional: Add keyboard navigation for expandable items
+document.addEventListener('keydown', function(e) {
+  if (!window.bitexExpandableMenu || !window.bitexExpandableMenu.hasOpenMenu()) {
+    return;
+  }
+
+  const activeMenu = window.bitexExpandableMenu.activeMenu;
+  if (!activeMenu) return;
+
+  const expandableLinks = activeMenu.querySelectorAll('.expandable-link');
+  const currentFocus = document.activeElement;
+  const currentIndex = Array.from(expandableLinks).indexOf(currentFocus);
+
+  switch(e.key) {
+    case 'ArrowDown':
+      e.preventDefault();
+      if (currentIndex < expandableLinks.length - 1) {
+        expandableLinks[currentIndex + 1].focus();
+      } else {
+        expandableLinks[0].focus(); // Loop to first
+      }
+      break;
+      
+    case 'ArrowUp':
+      e.preventDefault();
+      if (currentIndex > 0) {
+        expandableLinks[currentIndex - 1].focus();
+      } else {
+        expandableLinks[expandableLinks.length - 1].focus(); // Loop to last
+      }
+      break;
+      
+    case 'Enter':
+    case ' ':
+      if (currentFocus.classList.contains('expandable-link')) {
+        e.preventDefault();
+        currentFocus.click();
+      }
+      break;
+  }
+});
+
+trigger.addEventListener('click', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  this.toggleMenu(menu);
+  
+  // Remove focus from the trigger after click
+  e.target.blur();
+});
+
+// Enhanced mobile menu integration
+function enhanceMobileExpandableMenu() {
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mainNav = document.getElementById('main-nav');
+
+  if (mobileMenuToggle && mainNav) {
+    mobileMenuToggle.addEventListener('click', function() {
+      // Close all expandable menus when mobile menu is toggled
+      if (window.bitexExpandableMenu) {
+        window.bitexExpandableMenu.closeAllMenus();
+      }
+      
+      // Toggle mobile menu
+      mobileMenuToggle.classList.toggle('active');
+      mainNav.classList.toggle('active');
+    });
+  }
+
+  // Handle mobile menu item clicks
+  const expandableMenus = document.querySelectorAll('.expandable-menu');
+  expandableMenus.forEach(menu => {
+    const trigger = menu.querySelector('.dropbtn');
+    if (trigger) {
+      trigger.addEventListener('touchstart', function(e) {
+        // Prevent double-tap zoom on mobile
+        e.preventDefault();
+      });
+    }
+  });
+}
+
+// Update your DOMContentLoaded event to include mobile enhancements
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize expandable menu
+  window.bitexExpandableMenu = new BitexExpandableMenu();
+  
+  // Enhanced mobile menu integration
+  enhanceMobileExpandableMenu();
+});
