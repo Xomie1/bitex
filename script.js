@@ -1278,3 +1278,237 @@ document.addEventListener('DOMContentLoaded', function() {
   
   console.log('Scroll animations initialized successfully!');
 });
+
+
+// PRELOADER - Add this to your script.js
+
+class PreloaderManager {
+  constructor() {
+    this.preloader = document.getElementById('preloader');
+    this.progressFill = document.getElementById('progress-fill');
+    this.percentageText = document.getElementById('loading-percentage');
+    this.minLoadingTime = 2000; // Minimum 2 seconds
+    this.startTime = Date.now();
+    this.progress = 0;
+    
+    this.init();
+  }
+
+  init() {
+    // Start the preloader
+    this.simulateLoading();
+    
+    // Hide existing skeleton loader since we have a full preloader now
+    const skeletonLoader = document.getElementById('skeleton-loader');
+    if (skeletonLoader) {
+      skeletonLoader.style.display = 'none';
+    }
+  }
+
+  simulateLoading() {
+    // Simulate realistic loading progress
+    const progressSteps = [
+      { progress: 20, delay: 300 },   // Initial resources
+      { progress: 40, delay: 500 },   // CSS loaded
+      { progress: 60, delay: 400 },   // JavaScript loaded
+      { progress: 80, delay: 600 },   // Images loading
+      { progress: 95, delay: 400 },   // Final assets
+      { progress: 100, delay: 300 }   // Complete
+    ];
+
+    let currentStep = 0;
+
+    const updateProgress = () => {
+      if (currentStep < progressSteps.length) {
+        const step = progressSteps[currentStep];
+        
+        setTimeout(() => {
+          this.updateProgress(step.progress);
+          currentStep++;
+          updateProgress();
+        }, step.delay);
+      } else {
+        // Ensure minimum loading time
+        this.checkAndHide();
+      }
+    };
+
+    updateProgress();
+  }
+
+  updateProgress(newProgress) {
+    this.progress = newProgress;
+    
+    // Update progress bar if it exists
+    if (this.progressFill) {
+      this.progressFill.style.width = `${this.progress}%`;
+    }
+    
+    // Update percentage text if it exists
+    if (this.percentageText) {
+      this.percentageText.textContent = `${this.progress}%`;
+    }
+  }
+
+  checkAndHide() {
+    const elapsedTime = Date.now() - this.startTime;
+    const remainingTime = Math.max(0, this.minLoadingTime - elapsedTime);
+    
+    setTimeout(() => {
+      this.hidePreloader();
+    }, remainingTime);
+  }
+
+  hidePreloader() {
+    if (this.preloader) {
+      // Add fade out class
+      this.preloader.classList.add('fade-out');
+      
+      // Remove from DOM after animation
+      setTimeout(() => {
+        if (this.preloader && this.preloader.parentNode) {
+          this.preloader.remove();
+        }
+        
+        // Initialize scroll animations after preloader is gone
+        if (window.scrollAnimationManager) {
+          window.scrollAnimationManager.startObserving();
+        }
+        
+        console.log('Preloader hidden, site ready');
+      }, 600);
+    }
+  }
+
+  // Method to manually hide preloader (useful for testing)
+  forceHide() {
+    this.hidePreloader();
+  }
+}
+
+// Alternative: Real Progress Tracking (More Advanced)
+class RealProgressPreloader {
+  constructor() {
+    this.preloader = document.getElementById('preloader');
+    this.progressFill = document.getElementById('progress-fill');
+    this.percentageText = document.getElementById('loading-percentage');
+    this.totalAssets = 0;
+    this.loadedAssets = 0;
+    this.minLoadingTime = 1500;
+    this.startTime = Date.now();
+    
+    this.init();
+  }
+
+  init() {
+    // Count total assets to load
+    this.countAssets();
+    
+    // Track actual loading
+    this.trackAssetLoading();
+    
+    // Hide existing skeleton loader
+    const skeletonLoader = document.getElementById('skeleton-loader');
+    if (skeletonLoader) {
+      skeletonLoader.style.display = 'none';
+    }
+  }
+
+  countAssets() {
+    // Count images
+    const images = document.querySelectorAll('img');
+    const stylesheets = document.querySelectorAll('link[rel="stylesheet"]');
+    const scripts = document.querySelectorAll('script[src]');
+    
+    this.totalAssets = images.length + stylesheets.length + scripts.length;
+    console.log(`Total assets to track: ${this.totalAssets}`);
+  }
+
+  trackAssetLoading() {
+    // Track images
+    document.querySelectorAll('img').forEach(img => {
+      if (img.complete) {
+        this.assetLoaded();
+      } else {
+        img.onload = () => this.assetLoaded();
+        img.onerror = () => this.assetLoaded(); // Count errors as loaded
+      }
+    });
+
+    // Track stylesheets
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+      link.onload = () => this.assetLoaded();
+      link.onerror = () => this.assetLoaded();
+    });
+
+    // Track scripts
+    document.querySelectorAll('script[src]').forEach(script => {
+      script.onload = () => this.assetLoaded();
+      script.onerror = () => this.assetLoaded();
+    });
+
+    // Fallback timeout
+    setTimeout(() => {
+      if (this.loadedAssets < this.totalAssets) {
+        console.log('Forcing preloader completion due to timeout');
+        this.completeLoading();
+      }
+    }, 10000); // 10 second timeout
+  }
+
+  assetLoaded() {
+    this.loadedAssets++;
+    const progress = Math.min(100, Math.round((this.loadedAssets / this.totalAssets) * 100));
+    this.updateProgress(progress);
+
+    if (this.loadedAssets >= this.totalAssets) {
+      this.completeLoading();
+    }
+  }
+
+  updateProgress(progress) {
+    if (this.progressFill) {
+      this.progressFill.style.width = `${progress}%`;
+    }
+    
+    if (this.percentageText) {
+      this.percentageText.textContent = `${progress}%`;
+    }
+  }
+
+  completeLoading() {
+    const elapsedTime = Date.now() - this.startTime;
+    const remainingTime = Math.max(0, this.minLoadingTime - elapsedTime);
+    
+    setTimeout(() => {
+      this.hidePreloader();
+    }, remainingTime);
+  }
+
+  hidePreloader() {
+    if (this.preloader) {
+      this.preloader.classList.add('fade-out');
+      
+      setTimeout(() => {
+        if (this.preloader && this.preloader.parentNode) {
+          this.preloader.remove();
+        }
+        console.log('Real progress preloader hidden');
+      }, 600);
+    }
+  }
+}
+
+// Initialize preloader when DOM starts loading
+document.addEventListener('DOMContentLoaded', function() {
+  // Choose which preloader to use:
+  
+  // Option 1: Simulated progress (Recommended for most sites)
+  window.preloaderManager = new PreloaderManager();
+  
+  // Option 2: Real progress tracking (Uncomment to use instead)
+  // window.preloaderManager = new RealProgressPreloader();
+});
+
+// Debugging: Add to browser console to manually hide preloader
+// window.preloaderManager.forceHide();
